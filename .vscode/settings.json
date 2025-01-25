@@ -1,0 +1,16 @@
+{
+    "editor.fontSize":18,
+    "window.zoomLevel": 0.5,
+    "workbench.colorTheme": "Atom One Dark",
+    "workbench.iconTheme": "material-icon-theme",
+    "terminal.integrated.fontSize": 17,
+    "files.associations": {
+        "iostream": "cpp",
+        "vector": "cpp",
+        "string": "cpp",
+        "limits": "cpp",
+        "*.tcc": "cpp",
+        "ostream": "cpp",
+        "fstream": "cpp"
+    },
+}
