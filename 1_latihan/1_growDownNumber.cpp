@@ -2,14 +2,22 @@
 
 // fungsi growDownNumber
 int growDownNumber(int a){
+    if(a==0){
+        return 0;
+    }
     int arr[a+1];
     int x=a;
-    for(int i=a+1;i-1>-1;i--){
-         arr[x]=i;
+    for(int i=0;i<=a;i++){
+         arr[i]=x;
+         x--;
     }
     
-    for(int i=0;i<a+1;i++){
-        std::cout << arr[i] << ", ";
+    for(int i=0;i<=a;i++){
+        if(i==a){
+            std::cout << arr[i];
+        } else {    
+            std::cout << arr[i] << ", ";
+        }
     }
     std::cout<<std::endl;
 }
