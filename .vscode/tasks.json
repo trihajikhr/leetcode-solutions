@@ -6,21 +6,26 @@
 			"type": "shell",
 			"command": "g++",
 			"args": [
-				"-std=c++14",
-				"./${workspaceFolderBasename}/${fileBasename}",
-				"-o",
-				"./bin/${fileBasenameNoExtension}.exe"
+			  "-std=c++14",
+			  "${file}",  
+			  "-o",
+			  "${fileDirname}/bin/${fileBasenameNoExtension}.exe" 
 			]
 		},
 		{
-			"label": "Run Program",
+			"label": "Compile + Run",
 			"type": "shell",
-			"command": "./bin/${fileBasenameNoExtension}.exe",
+			"command": "& ${fileDirname}/bin/${fileBasenameNoExtension}.exe",
 			"dependsOn": ["Compile C++"],
 			"group": {
 				"kind": "build",
 				"isDefault": true
 			}
+		},
+		{
+			"label":"Only Run Program",
+			"type": "shell",
+			"command":"& ${fileDirname}/bin/${fileBasenameNoExtension}.exe",
 		}
 	]
 }
