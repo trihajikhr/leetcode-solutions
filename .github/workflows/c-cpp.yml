@@ -13,16 +13,16 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
-    # Install CMake jika diperlukan (meskipun bisa juga menggunakan yang sudah ada di Windows)
-    - name: Set up CMake
-      uses: actions/setup-cmake@v3
-      with:
-        cmake-version: '3.21.1'  # Pilih versi yang sesuai
+    # Install CMake menggunakan Chocolatey
+    - name: Install CMake
+      run: |
+        choco install cmake --installargs 'ADD_CMAKE_TO_PATH=System' -y
+        refreshenv
 
     # Install Visual Studio Build Tools (jika belum ada)
     - name: Install Visual Studio Build Tools
       run: |
-        choco install visualstudio2019-workload-vctools
+        choco install visualstudio2019-workload-vctools -y
         refreshenv
 
     # Build proyek menggunakan CMake
