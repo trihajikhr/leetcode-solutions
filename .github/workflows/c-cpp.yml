@@ -1,4 +1,4 @@
-name: C/C++ CI
+name: Build and Test C++ Code on Windows
 
 on:
   push:
@@ -8,16 +8,32 @@ on:
 
 jobs:
   build:
-
-    runs-on: ubuntu-latest
+    runs-on: windows-latest  # Pastikan menjalankan di Windows
 
     steps:
-    - uses: actions/checkout@v4
-    - name: configure
-      run: ./configure
-    - name: make
-      run: make
-    - name: make check
-      run: make check
-    - name: make distcheck
-      run: make distcheck
+    - uses: actions/checkout@v2
+
+    # Install CMake jika diperlukan (meskipun bisa juga menggunakan yang sudah ada di Windows)
+    - name: Set up CMake
+      uses: actions/setup-cmake@v3
+      with:
+        cmake-version: '3.21.1'  # Pilih versi yang sesuai
+
+    # Install Visual Studio Build Tools (jika belum ada)
+    - name: Install Visual Studio Build Tools
+      run: |
+        choco install visualstudio2019-workload-vctools
+        refreshenv
+
+    # Build proyek menggunakan CMake
+    - name: Build with CMake
+      run: |
+        mkdir build
+        cd build
+        cmake ..
+        cmake --build . --config Release
+
+    # Menjalankan tes jika diperlukan
+    - name: Run tests
+      run: |
+        ctest --output-on-failure
