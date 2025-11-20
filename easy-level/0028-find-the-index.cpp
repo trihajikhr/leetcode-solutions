@@ -1,12 +1,10 @@
 #include<iostream>
-#include<vector>
-#include<algorithm>
 using namespace std;
 
 class Solution {
 public:
-  int searchInsert(vector<int>& nums, int target) {
-    return ranges::lower_bound(nums, target) - nums.begin();
+  int strStr(string haystack, string needle) {
+    return haystack.find(needle);
   }
 };
 

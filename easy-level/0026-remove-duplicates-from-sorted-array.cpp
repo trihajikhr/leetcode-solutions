@@ -5,8 +5,15 @@ using namespace std;
 
 class Solution {
 public:
-  int searchInsert(vector<int>& nums, int target) {
-    return ranges::lower_bound(nums, target) - nums.begin();
+  int removeDuplicates(vector<int>& nums) {
+    int idx = 0;
+    for(int i=0; i<nums.size(); i++){
+      if(nums[idx] != nums[i]){
+        nums[++idx] = nums[i];
+      }
+    }
+
+    return idx+1;
   }
 };
 
