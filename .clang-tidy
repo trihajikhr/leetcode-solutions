@@ -1,0 +1,134 @@
+Checks: >
+  clang-analyzer-*,
+  modernize-*,
+  performance-*,
+  bugprone-*,
+# misc-*,
+
+# readability-*,
+# -readability-magic-numbers,
+
+# cppcoreguidelines-*,
+# -cppcoreguidelines-avoid-magic-numbers,
+
+# --- CP based ---
+# clang-analyzer-*,
+# modernize-*,
+# performance-*,
+# bugprone-*,
+# misc-*,
+
+# --- Optional param (toggle param) -- #
+# abseil-*,
+# altera-*,
+# android-*,
+# boost-*,
+# bugprone-*,
+# cert-*,
+# clang-analyzer-*,
+# concurrency-*,
+# cppcoreguidelines-*,
+# darwin-*,
+# fuchsia-*,
+# google-*,
+# hicpp-*,
+# linuxkernel-*,
+# llvm-*,
+# llvmlibc-*,
+# misc-*,
+# modernize-*,
+# mpi-*,
+# objc-*,
+# openmp-*,
+# performance-*,
+# portability-*,
+# readability-*,
+# zircon-*,
+
+
+
+# Jika ingin menandai semua warning sebagai error, gunakan:
+# WarningsAsErrors: '*'
+# Atau setting hanya beberapa saja yang dibolehkan menandai warning sebagai error
+# Seperti dibawah ini:
+WarningsAsErrors: >
+  clang-analyzer-*,
+  bugprone-*
+# Saat menulis kode, ada kalanya linter cukup mengganggu di beberapa baris tertentu
+# Nonaktifkan linter pada baris tersebut dengan menambahkan komentar //NOLINT diakhir baris
+
+
+
+# Mengatur agar clang-tidy menggunakan pendekatan C++23 yang lebih baru
+# ketika memberikan saran dan rekomendasi
+ExtraArgs: ['-std=c++23']
+
+
+
+# Ini adalah bagian jika ingin memberikan custom parameter.
+# NONAKTIFKAN OPSI INI JIKA INGIN MENGGUNAKAN SETTING BAWAAN!
+# ATAU BEBERAPA LINT AKAN MENJADI TIDAK BEKERJA!!!!
+CheckOptions:
+
+  # Mengatur agar nama variable dan parameter fungsi memiliki panjang minimal <value>
+  - key: readability-identifier-length.MinimumVariableNameLength
+    value: '1'
+  - key: readability-identifier-length.MinimumParameterNameLength
+    value: '1'
+  - key: readability-identifier-length.MinimumExceptionNameLength
+    value: '3'
+  - key: readability-identifier-length.IgnoredExceptionVariableNames
+    value: '^[e]$'
+  - key: readability-identifier-length.MinimumLoopCounterNameLength
+    value: '3'
+  - key: readability-identifier-length.IgnoredLoopCounterNames
+    value: '^[ijknmtxyz_]$'
+
+  # Mengatur agar gaya penulisan nama fungsi, variable, parameter, dll menggunakan gaya <value>
+  - key: readability-identifier-naming.FunctionCase
+    value: camelBack
+  - key: readability-identifier-naming.VariableCase
+    value: camelBack
+  - key: readability-identifier-naming.ParameterCase
+    value: camelBack
+
+  - key: readability-identifier-naming.ClassCase
+    value: CamelCase
+  - key: readability-identifier-naming.AbstractClassCase
+    value: CamelCase
+  - key: readability-identifier-naming.MethodCase
+    value: camelBack
+  - key: readability-identifier-naming.MemberCase
+    value: camelBack
+
+  - key: readability-identifier-naming.EnumCase
+    value: CamelCase
+  - key: readability-identifier-naming.EnumConstantCase
+    value: UPPER_CASE
+
+  - key: readability-identifier-naming.StructCase
+    value: CamelCase
+  - key: readability-identifier-naming.UnionCase
+    value: CamelCase
+  - key: readability-identifier-naming.NamespaceCase
+    value: lower_case
+
+  - key: readability-identifier-naming.GlobalConstantCase
+    value: UPPER_CASE
+  - key: readability-identifier-naming.StaticConstantCase
+    value: UPPER_CASE
+  - key: readability-identifier-naming.TypeAliasCase
+    value: UPPER_CASE
+  - key: readability-identifier-naming.TemplateParameterCase
+    value: CamelCase
+
+  # Menambahkan tingkat pemeriksaan performance yang lebih ketat
+  - key: performance-for-range-copy.AllowedTypes
+    value: ''
+  - key: performance-for-range-copy.WarnOnAllAutoCopies
+    value: true
+
+  - key: performance-unnecessary-copy-initialization.AllowedTypes
+    value: ''
+  - key: performance-unnecessary-value-param.AllowedTypes
+    value: ''
